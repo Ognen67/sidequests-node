@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-express-sequelize-postgresql",
+  "name": "sidequests-node",
   "version": "1.0.0",
   "description": "Node.js Rest Apis with Express, Sequelize & PostgreSQL",
   "main": "index.js",
