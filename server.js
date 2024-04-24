@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const userRoutes = require("./app/routes/sidequests-routes")
+
 
 const app = express();
 
@@ -31,10 +33,13 @@ db.sequelize.sync()
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to sidequests!" });
 });
 
-require("./app/routes/turorial.routes")(app);
+// Use user routes
+app.use('/api/users', userRoutes);
+
+// require("./app/routes/turorial.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
