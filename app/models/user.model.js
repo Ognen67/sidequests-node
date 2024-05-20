@@ -23,6 +23,11 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
       },
     },
+    totalDistance: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+      defaultValue: 0,
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,

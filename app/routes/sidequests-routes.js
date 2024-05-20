@@ -9,6 +9,8 @@ router.post('/register', UserController.register);
 // POST /api/users/login
 router.post('/login', UserController.login);
 
+router.get('/user-data', verifyToken, UserController.getUserData);
+
 // POST /api/users/addLocation
 router.post('/locations', verifyToken, UserController.addLocation);
 

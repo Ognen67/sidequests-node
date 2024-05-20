@@ -1,12 +1,29 @@
 const express = require("express");
 const cors = require("cors");
-const userRoutes = require("./app/routes/sidequests-routes")
+const userRoutes = require("./app/routes/sidequests-routes");
+// const app = express();
 
+// socket io
+// const http = require('http');
+// const server = http.createServer(app);
+const app = require("express")();
+const http = require("http").Server(app);
 
-const app = express();
+// const socketIO = require("socket.io")(http, {
+//   cors: {
+//     origin: '*'
+//   },
+// });
+
+// socketIO.on("connection", (socket) => {
+//   console.log(`${socket.id} user is just connected`);
+// });
+
+// const { Server } = require("socket.io");
+// const io = new Server(server);
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:8081",
 };
 
 app.use(cors(corsOptions));
@@ -18,7 +35,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const db = require("./app/models");
-db.sequelize.sync()
+db.sequelize
+  .sync()
   .then(() => {
     console.log("Synced db.");
   })
@@ -37,12 +55,9 @@ app.get("/", (req, res) => {
 });
 
 // Use user routes
-app.use('/api/users', userRoutes);
+app.use("/api/users", userRoutes);
 
-// require("./app/routes/turorial.routes")(app);
-
-// set port, listen for requests
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
+http.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

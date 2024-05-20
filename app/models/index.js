@@ -1,7 +1,9 @@
 const dbConfig = require("../config/db.config.js");
+const pg = require("pg")
 
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+const sequelize = new Sequelize("postgres://postgres.wxszcnyyufjfdbplgqqw:sidequests123!@aws-0-eu-central-1.pooler.supabase.com:5432/postgres", {
+  dialectModule: pg,  
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
 

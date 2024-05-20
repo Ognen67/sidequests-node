@@ -1,8 +1,10 @@
+require("dotenv").config()
+
 module.exports = {
-  HOST: "localhost",
-  USER: "postgres",
-  PASSWORD: "postgres",
-  DB: "sidequests",
+  HOST: "aws-0-eu-central-1.pooler.supabase.com",
+  USER: "postgres.wxszcnyyufjfdbplgqqw",
+  PASSWORD: "sidequests123!",
+  DB: "postgres",
   dialect: "postgres",
   pool: {
     max: 5,
